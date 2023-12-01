@@ -4,6 +4,7 @@ import br.com.exemplo.persistence.dto.UserDto;
 import br.com.exemplo.persistence.model.User;
 import br.com.exemplo.services.UserService;
 import jakarta.inject.Inject;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
@@ -25,7 +26,7 @@ public class UserController {
     }
 
     @POST
-    public Response createUser(UserDto userDto) {
+    public Response createUser(@Valid UserDto userDto) {
         userService.createUser(userDto);
         return Response.status(Response.Status.CREATED).build();
     }

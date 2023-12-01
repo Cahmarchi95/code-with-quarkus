@@ -1,6 +1,7 @@
 package br.com.exemplo.persistence.model;
-
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "users")
@@ -11,7 +12,10 @@ public class User {
     Long id;
 
     @Column(name="name")
+    @NotBlank(message = "O nome não pode estar em branco")
     String name;
+
+    @NotNull(message = "A idade não pode ser nula")
     Integer age;
 
     public Long getId() {
